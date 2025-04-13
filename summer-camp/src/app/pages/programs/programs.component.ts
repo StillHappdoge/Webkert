@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { ProgramItemsComponent } from './program-items/program-items.component';
 
 export interface Programs{
   id: number;
@@ -14,13 +15,13 @@ export interface Programs{
 
 @Component({
   selector: 'app-programs',
-  imports: [CommonModule,MatCardModule,MatButtonModule],
+  imports: [CommonModule,MatCardModule,MatButtonModule,ProgramItemsComponent],
   templateUrl: './programs.component.html',
   styleUrl: './programs.component.scss',
   standalone: true
 })
 export class ProgramsComponent {
-  track = 0;
+
   @Output()selectedPage: EventEmitter<string>=new EventEmitter();
   constructor(private router:Router){
     console.log("construtor called");

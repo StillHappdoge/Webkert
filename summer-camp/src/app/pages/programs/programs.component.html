@@ -7,16 +7,7 @@
     <h2>🎨 Programok</h2>
     <div class="card-container">
       @for(program of programs; track trackById($index,program)){
-        <mat-card class="program-card" [ngClass]="{'hover': track === program.id}"
-        (mouseenter)="track = program.id"
-        (mouseleave)="track = 0">
-          <mat-card-title>{{program.name}}</mat-card-title>
-          <br>
-          <mat-card-content>
-            <p><strong>Időpont:</strong> {{program.date}}</p>
-            <p><strong>Helyszín:</strong> {{program.place}}</p>  
-          </mat-card-content>
-        </mat-card>
+        <app-program-items [program]="program"></app-program-items>
       }
     </div>
   </section>

@@ -1,0 +1,10 @@
+<mat-card class="program-card" [ngClass]="{'hover': track === program.id}"
+    (mouseenter)="track = program.id"
+    (mouseleave)="track = 0">
+    <mat-card-title>{{program.name}}</mat-card-title>
+    <br>
+    <mat-card-content>
+    <p><strong>Időpont:</strong> {{program.date}}</p>
+    <p><strong>Helyszín:</strong> {{program.place}}</p>  
+    </mat-card-content>
+</mat-card>
