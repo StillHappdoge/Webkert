@@ -1,0 +1,38 @@
+<main>
+  <section id="about-us">
+    <h2>🌿Rólunk</h2>
+    <p>
+      A Nyári Tábor célja, hogy élményekkel teli, biztonságos és barátságos környezetet teremtsen gyerekek számára.
+      Szenvedéllyel dolgozunk azon, hogy mindenki mosollyal az arcán térjen haza.
+    </p>
+
+    <section class="registration-section">
+      <h2>🙋‍♀️Regisztrálj segítőnek</h2>
+      <form class="registration-form" [formGroup]="regform">
+        <mat-form-field>
+          <mat-label>Név</mat-label>
+          <input matInput formControlName="name" placeholder="Pl.:Kiss Janos" />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" />
+          <mat-icon matSuffix>mail</mat-icon>
+        
+          @if (email.invalid && (email.dirty || email.touched)) {
+            <mat-error>{{ errorMessage() }}</mat-error>
+          }
+        </mat-form-field>
+        
+
+        <mat-form-field>
+          <mat-label>Életkor</mat-label>
+          <input matInput formControlName="age"/>
+        </mat-form-field>
+        <p [ngStyle]="{'color':error? 'red':'green'}">{{msg}}</p>
+        <button mat-raised-button type="submit" (click)="reg()">🌿 Jelentkezem</button>
+      </form>
+    </section>
+  </section>
+</main>
+<!--🌿-->

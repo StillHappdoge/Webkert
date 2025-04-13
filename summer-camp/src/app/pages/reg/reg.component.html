@@ -1,0 +1,35 @@
+<main>
+    <section class="registration-section">
+        <h2>🎉 Regisztrálj a Nyári Táborba!</h2>
+        <form class="registration-form" [formGroup]="regform">
+          <mat-form-field>
+            <mat-label>Név</mat-label>
+            <input matInput formControlName="name" placeholder="Pl.:Kiss Janos" />
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" />
+            <mat-icon matSuffix>mail</mat-icon>
+          
+            @if (email.invalid && (email.dirty || email.touched)) {
+              <mat-error>{{ errorMessage() }}</mat-error>
+            }
+          </mat-form-field>
+          
+
+          <mat-form-field>
+            <mat-label>Életkor</mat-label>
+            <input matInput formControlName="age"/>
+          </mat-form-field>
+          
+          <mat-form-field>
+            <mat-label>Megjegyzés</mat-label>
+            <textarea matInput formControlName="message"></textarea>
+            <mat-hint>Pl.: Allergiák, speciális étkezés, gyógyszerek</mat-hint>
+          </mat-form-field>
+
+          <button mat-raised-button type="submit" (click)="reg()">🎒 Jelentkezem</button>
+        </form>
+      </section>      
+</main>
