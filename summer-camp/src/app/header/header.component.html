@@ -1,11 +1,49 @@
-<header>
-  <nav>
-    <h1>☀️ Nyári Tábor ☀️</h1>
-    <ul>
-      <li><a routerLink="/home">Home</a></li>
-      <li><a routerLink="/programs">Programok</a></li>
-      <li><a routerLink="/about-us">Rólunk</a></li>
-      <li><a routerLink="/reg">Jelentkezés</a></li>
-    </ul>
-  </nav>  
+<header>  
+  <mat-nav-list>
+    <a mat-list-item routerLink="/home" routerLinkActive="active-list-item" (click)="closeMenu()">
+      <mat-icon matListItemIcon>home</mat-icon>
+      <span matListItemTitle>Home</span>
+    </a>
+    <a mat-list-item routerLink="/programs" routerLinkActive="active-list-item" (click)="closeMenu()">
+      <mat-icon matListItemIcon>tasks</mat-icon>
+      <span matListItemTitle>Programok</span>
+    </a>
+    <a mat-list-item routerLink="/about-us" routerLinkActive="active-list-item" (click)="closeMenu()">
+      <mat-icon matListItemIcon>description</mat-icon>
+      <span matListItemTitle>Rólunk</span>
+    </a>
+    <!--@if (isLoggedIn) {
+      <a mat-list-item routerLink="/profile" routerLinkActive="active-list-item" (click)="closeMenu()">
+        <mat-icon matListItemIcon>person</mat-icon>
+        <span matListItemTitle>Profile</span>
+      </a>
+    }-->
+    @if (isLoggedIn) {
+      <a mat-list-item routerLink="/reg" routerLinkActive="active-list-item" (click)="closeMenu()">
+        <mat-icon matListItemIcon>group_add</mat-icon>
+        <span matListItemTitle>Jelentkezés</span>
+      </a>
+      <a mat-list-item routerLink="/profile" routerLinkActive="active-list-item" (click)="closeMenu()">
+        <mat-icon matListItemIcon>account_circle</mat-icon>
+        <span matListItemTitle>Profile</span>
+      </a>
+    }
+    @if (!isLoggedIn) {
+      <a mat-list-item routerLink="/login" routerLinkActive="active-list-item" (click)="closeMenu()">
+        <mat-icon matListItemIcon>login</mat-icon>
+        <span matListItemTitle>Login</span>
+      </a>
+
+      <a mat-list-item routerLink="/registration" routerLinkActive="active-list-item" (click)="closeMenu()">
+        <mat-icon matListItemIcon>how_to_reg</mat-icon>
+        <span matListItemTitle>Regisztráció</span>
+      </a>
+    }
+    @if (isLoggedIn) {
+      <a mat-list-item (click)="logout()">
+        <mat-icon matListItemIcon>logout</mat-icon>
+        <span matListItemTitle>Logout</span>
+      </a> 
+    }
+  </mat-nav-list>
 </header>

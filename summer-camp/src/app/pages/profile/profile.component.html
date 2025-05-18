@@ -1,0 +1,25 @@
+<div class="profile-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>User Profile</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      @if (user) {
+        <div class="profile-info">
+          <div class="user-details">
+            <h3 class="user-name">{{user.name}}</h3>
+            <div class="user-email">
+              <mat-icon>email</mat-icon>
+              <span>{{ user.email }}</span>
+            </div>
+          </div>
+        </div>
+        } @else {
+        <div class="empty-state">
+          <mat-icon>person_off</mat-icon>
+          <p>Adatok betöltése</p>
+        </div>
+      }
+    </mat-card-content>
+  </mat-card>
+</div>

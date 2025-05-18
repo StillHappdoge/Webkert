@@ -1,0 +1,40 @@
+<div class="login-container">
+  <h1>Login</h1>
+
+  @if (isLoading) {
+    <div class="loading-container">
+      <h2>Login in progress</h2>
+      <mat-spinner diameter="50"></mat-spinner>
+      <p>Please wait...</p>
+    </div>
+  }
+
+  @if (showLoginForm) {
+    <form class="login-form" [formGroup]="loginform">
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email">
+        <mat-icon matSuffix>email</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password">
+        <mat-icon matSuffix>lock</mat-icon>
+      </mat-form-field>
+      @if (message){
+        <div class="not-error-message">
+          {{message}}
+        </div>
+      }
+      @if (loginError) {
+        <div class="error-message">
+          {{ loginError }}
+        </div>
+      }
+
+      <button mat-raised-button color="primary" type="submit" (click)="login()">Login</button>
+      <button mat-raised-button [routerLink]="['/signup']">Register</button>
+    </form>
+  }
+</div>

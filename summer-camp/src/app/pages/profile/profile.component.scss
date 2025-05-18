@@ -1,0 +1,94 @@
+.profile-container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+
+  mat-card {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    padding: 1rem;
+
+    mat-card-header {
+        border-radius: 16px 16px 0 0;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+
+        mat-card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #f57f17;
+        }
+    }
+
+
+    mat-card-content {
+      .profile-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+
+        .user-details {
+          text-align: center;
+
+          .user-name {
+            font-size: 1.25rem;
+            color: #f57f17;
+            margin-bottom: 0.5rem;
+          }
+
+          .user-email {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #424242;
+
+            mat-icon {
+              margin-right: 0.5rem;
+              color: #fbc02d;
+            }
+          }
+        }
+      }
+
+      .empty-state {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #757575;
+        padding: 2rem;
+
+        mat-icon {
+          font-size: 48px;
+          color: #ffb300;
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    mat-card {
+      margin: 1rem;
+      padding: 0.5rem;
+
+      mat-card-header {
+        mat-card-title {
+          font-size: 1.25rem;
+        }
+      }
+
+      mat-card-content {
+        .profile-info .user-details .user-name {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}

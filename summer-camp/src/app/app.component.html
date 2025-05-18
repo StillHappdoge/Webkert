@@ -1,2 +1,38 @@
-<app-header></app-header>
-<router-outlet />
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    <app-header [sidenav]="sidenav" [isLoggedIn]="isLoggedIn" (logoutEvent)="logout()"></app-header>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <button 
+        mat-button 
+        (click)="onToggleSidenav(sidenav)"
+        class="menu-toggle-button">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <div><h1>☀️ Nyári Tábor ☀️</h1></div>
+      <nav>
+        <ul>
+          <li><a routerLink="/home">Home</a></li>
+          <li><a routerLink="/programs">Programok</a></li>
+          <li><a routerLink="/about-us">Rólunk</a></li>
+          @if (isLoggedIn){
+            <li><a routerLink="/reg">Jelentkezés</a></li> 
+            <li><a routerLink="/profile">Profile</a></li> 
+          }
+          @if (!isLoggedIn) {
+            <li><a routerLink="/login">Login</a></li>
+            
+            <li><a routerLink="/registration">Regisztráció</a></li>
+          }
+
+          @if (isLoggedIn) {
+            <li><a href="#" (click)="logout()">Logout</a></li>
+          }
+          
+      </ul>
+    </nav>
+    </mat-toolbar>
+    <router-outlet />
+  </mat-sidenav-content>
+</mat-sidenav-container>

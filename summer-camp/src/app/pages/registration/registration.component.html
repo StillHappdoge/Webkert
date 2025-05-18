@@ -1,0 +1,38 @@
+<main>
+    <section class="registration-section">
+        <h2>🎉 Regisztrálj most!</h2>
+        <form class="registration-form" [formGroup]="registrationform">
+
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" />
+                <mat-icon matSuffix>mail</mat-icon>
+            
+                @if (email.invalid && (email.dirty || email.touched)) {
+                <mat-error>{{ errorMessage() }}</mat-error>
+                }
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Név</mat-label>
+                <input matInput formControlName="name" placeholder="Pl.:Kiss Janos" />
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Felhasznaló név</mat-label>
+                <input matInput formControlName="username" placeholder="Pl.:Kisstheking" />
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Jelszó</mat-label>
+                <input type="password" matInput formControlName="password" placeholder="Pl.:************" />
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Jelszó megerősítése</mat-label>
+                <input type="password" matInput formControlName="re_password" placeholder="Pl.:************" />
+            </mat-form-field>
+            <p>{{errormsg}}</p>
+            <button mat-raised-button type="submit" (click)="reg()">🎒 Regisztrálok</button>
+        </form>
+    </section>      
+</main>
