@@ -58,10 +58,17 @@ export class UserService {
           signups: []
         };
       }
-
+      const signUpCollection=collection(this.firestore, 'signups');
+      const q=query(signUpCollection, where('id','in',user.signups));
+      const signUpsSnapshot=await getDocs(q);
+      const signups: Signups[]=[]
+      signUpsSnapshot.forEach(doc=>{
+        signups.push({...doc.data(), id:doc.id}as Signups)
+      })
+        console.log(signups)
       return {
         user,
-        signups: []
+        signups: signups
       };
     } catch (error) {
       console.error('Hiba a felhasználói adatok betöltése során:', error);

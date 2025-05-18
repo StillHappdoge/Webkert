@@ -34,25 +34,27 @@ export class LoginComponent {
   
   })
   isLoading: boolean = false;
-  loginError: string = '';
+  error = false;
+  msg="";
   showLoginForm: boolean = true;
 
-  message="";
   constructor(private authservice:AuthService,private router:Router) {
 
   }
 
   login() {
-    this.loginError = '';
+    this.msg = '';
 
     const email=this.loginform.value.email || '';
     const password=this.loginform.value.password|| '';
 
     this.authservice.login(email,password).then(()=>{
-      this.message="Yipee!";
+      this.msg="Yipee!";
+      this.error=false
       window.location.href="/home";
     }).catch(error=>{
-      this.loginError="Oh-oh"
+      this.msg="Oh-oh"
+      this.error=true
     })
   }
 }

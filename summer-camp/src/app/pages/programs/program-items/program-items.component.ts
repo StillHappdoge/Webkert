@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Programs } from '../programs.component';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
@@ -12,4 +12,9 @@ import { CommonModule } from '@angular/common';
 export class ProgramItemsComponent {
   track = 0;
   @Input() program!: Programs;
+  @Output() programClicked = new EventEmitter<Programs>();
+
+  onCardClick() {
+  this.programClicked.emit(this.program);
+  }
 }

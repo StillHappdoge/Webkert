@@ -25,7 +25,8 @@ import { Router } from '@angular/router';
   styleUrl: './registration.component.scss'
 })
 export class RegistrationComponent {
-  errormsg = "";
+  error = false;
+  msg="";
   constructor(
     private router: Router,
     private auth:AuthService
@@ -55,7 +56,8 @@ export class RegistrationComponent {
   }
   reg(){
     if (this.registrationform.invalid) {
-      this.errormsg = 'Please correct any errors on the form before submitting.';
+      this.msg = 'Please correct any errors on the form before submitting.';
+      this.error=true;
       return;
     }
 
@@ -63,7 +65,8 @@ export class RegistrationComponent {
     const re_password = this.registrationform.value.re_password;
 
     if (password !== re_password) {
-      this.errormsg = 'The passwords do not match.';
+      this.msg = 'The passwords do not match.';
+      this.error=true;
       return;
     }
 
@@ -77,25 +80,31 @@ export class RegistrationComponent {
     const email = this.registrationform.value.email||'';
     const pw = this.registrationform.value.password||'';
     this.auth.signUp(email,pw,userData).then(userCredential=>{
-    
+        this.msg = 'Yipee!';
+        this.error=false;
         console.log('Registration succesful:', userCredential.user);
-        this.auth.updateLoginStatus(true);
+        this.auth.updateLoginStatus(true);   
         window.location.href="/home"
     }).catch(error =>{
       console.error('Regisztrációs hiba: ',error);
       
       switch(error.code){
         case 'auth/email-already-in-use':
-          this.errormsg = 'This email already in use.';
+          this.msg = 'This email already in use.';
+          this.error=true;
           break;
         case 'auth/invalid-email':
-          this.errormsg = 'Invalid email.';
+          this.msg = 'Invalid email.';
+          this.error=true;
           break;
         case 'auth/weak-password':
-            this.errormsg = 'The password is too weak. Use at least 6 characters.';
+            this.msg = 'The password is too weak. Use at least 6 characters.';
+            this.error=true;
             break;
         default:
-            this.errormsg = 'An error has occurred during registration. Please try again later.';
+            this.msg = 'An error has occurred during registration. Please try again later.';
+            this.error=true;
+          
       }
     })
   }

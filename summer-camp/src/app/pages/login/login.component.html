@@ -22,17 +22,8 @@
         <input matInput type="password" formControlName="password">
         <mat-icon matSuffix>lock</mat-icon>
       </mat-form-field>
-      @if (message){
-        <div class="not-error-message">
-          {{message}}
-        </div>
-      }
-      @if (loginError) {
-        <div class="error-message">
-          {{ loginError }}
-        </div>
-      }
-
+      
+      <p [ngStyle]="{'color':error? 'red':'green'}">{{msg}}</p>  
       <button mat-raised-button color="primary" type="submit" (click)="login()">Login</button>
       <button mat-raised-button [routerLink]="['/registration']">Register</button>
     </form>

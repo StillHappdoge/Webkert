@@ -3,5 +3,5 @@ export interface Signups {
     name: string;
     email: string;
     age: number;
-    description?: string;
+    description: string;
 }

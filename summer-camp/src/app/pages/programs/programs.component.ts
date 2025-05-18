@@ -84,5 +84,9 @@ export class ProgramsComponent {
   changePage() {
     this.router.navigateByUrl("/reg");
   }
+  handleProgramClick(program: Programs) {
+    console.log('Program clicked:', program);
+  }
+
 
 }

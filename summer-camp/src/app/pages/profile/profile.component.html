@@ -14,6 +14,17 @@
             </div>
           </div>
         </div>
+        <section class="programok">
+            <h2>Jelentkezések</h2>
+            <div class="card-container">
+            @for(signup of signups; track trackById($index,signup)){
+                <app-profile-signups [signup]="signup">
+
+                </app-profile-signups>
+            }
+            </div>
+        </section>
+  
         } @else {
         <div class="empty-state">
           <mat-icon>person_off</mat-icon>

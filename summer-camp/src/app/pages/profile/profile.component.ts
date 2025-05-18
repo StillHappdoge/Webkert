@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { UserService } from '../../shared/services/user.service';
 import { Newuser } from '../../shared/models/newuser';
 import { Signups } from '../../shared/models/signups';
+import { ProfileSignupsComponent } from './profile-signups/profile-signups.component';
 
 @Component({
   selector: 'app-profile',
@@ -15,7 +16,8 @@ import { Signups } from '../../shared/models/signups';
     CommonModule,
     MatCardModule,
     MatIconModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    ProfileSignupsComponent
   ],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
@@ -43,10 +45,15 @@ export class ProfileComponent implements OnInit, OnDestroy {
       next: (data) => {
         this.user = data.user;
         this.signups = data.signups;
+        console.log(data.signups)
       },
       error: (error) => {
         console.error('Hiba a felhasználói profil betöltésekor:', error);
       }
     });
   }
+
+  trackById(index: number, item: Signups): string {
+      return item.id;
+    }
 }

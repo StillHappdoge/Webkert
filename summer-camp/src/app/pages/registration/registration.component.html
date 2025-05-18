@@ -31,7 +31,7 @@
                 <mat-label>Jelszó megerősítése</mat-label>
                 <input type="password" matInput formControlName="re_password" placeholder="Pl.:************" />
             </mat-form-field>
-            <p>{{errormsg}}</p>
+            <p [ngStyle]="{'color':error? 'red':'green'}">{{msg}}</p>
             <button mat-raised-button type="submit" (click)="reg()">🎒 Regisztrálok</button>
         </form>
     </section>      

@@ -7,7 +7,10 @@
     <h2>🎨 Programok</h2>
     <div class="card-container">
       @for(program of programs; track trackById($index,program)){
-        <app-program-items [program]="program"></app-program-items>
+        <app-program-items 
+          [program]="program"
+          (programClicked)="handleProgramClick($event)">
+        </app-program-items>
       }
     </div>
   </section>
